@@ -51,5 +51,13 @@ class CategoryAdapter :RecyclerView.Adapter<CategoryAdapter.viewholder>() {
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         val categoryItem = differ.currentList[position]
         holder.bind(categoryItem)
+
+        holder.itemView.setOnClickListener {
+            onClick?.invoke(categoryItem)
+        }
+
     }
+
+
+   var onClick: ((Category) -> Unit)?=null
 }

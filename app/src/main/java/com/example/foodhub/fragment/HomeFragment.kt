@@ -76,6 +76,14 @@ class HomeFragment : Fragment() {
 
         })
 
+        adapterCategory.onClick = {
+
+           val  data = Bundle().apply {
+                putString("name", it.strCategory.trim())
+            }
+
+            findNavController().navigate(R.id.action_homeFragment_to_categoryItemFragment,data)
+        }
 
     }
 

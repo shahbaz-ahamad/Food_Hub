@@ -63,6 +63,7 @@ class MealViewmodel @Inject constructor(
 
     fun fetchCategory(){
         viewModelScope.launch {
+            _categoryState.emit(Resources.Loading())
             try {
 
                 apiService.getcategory().enqueue(object : Callback<CategoryList>{
