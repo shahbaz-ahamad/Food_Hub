@@ -1,10 +1,7 @@
 package com.example.foodhub.di
 
-import android.app.Application
-import android.content.Context
-import com.example.foodhub.R
+import com.example.foodhub.helper.Increase_Deacrease
 import com.example.foodhub.retrofit.ApiService
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -41,5 +38,13 @@ object AppModule {
     fun provideApiServices(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideIncrease_Deacrease(
+        firebaseAuth: FirebaseAuth,
+        firestore: FirebaseFirestore
+    ) = Increase_Deacrease(firestore,firebaseAuth)
+
 
 }

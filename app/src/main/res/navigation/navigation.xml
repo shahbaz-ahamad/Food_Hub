@@ -9,7 +9,11 @@
         android:id="@+id/cartFragment"
         android:name="com.example.foodhub.fragment.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_cartDetailFragment"
+            app:destination="@id/cartDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.foodhub.fragment.HistoryFragment"
@@ -33,21 +37,17 @@
             app:destination="@id/categoryItemFragment" />
     </fragment>
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.foodhub.fragment.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
-    <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.foodhub.fragment.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details">
-        <argument
-            android:name="popularProduct"
-            app:argType="com.example.foodhub.datamodel.retrofitdatamodel.Popular" />
         <action
             android:id="@+id/action_detailsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.example.foodhub.datamodel.retrofitdatamodel.EachCategoryItem" />
+
     </fragment>
     <fragment
         android:id="@+id/categoryItemFragment"
@@ -55,5 +55,20 @@
         android:label="fragment_category_item"
         tools:layout="@layout/fragment_category_item" >
 
+        <action
+            android:id="@+id/action_categoryItemFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartDetailFragment"
+        android:name="com.example.foodhub.fragment.CartDetailFragment"
+        android:label="CartDetailFragment"
+        tools:layout="@layout/fragment_cart_detail">
+        <action
+            android:id="@+id/action_cartDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <argument
+            android:name="cartproduct"
+            app:argType="com.example.foodhub.datamodel.CartProduct" />
     </fragment>
 </navigation>

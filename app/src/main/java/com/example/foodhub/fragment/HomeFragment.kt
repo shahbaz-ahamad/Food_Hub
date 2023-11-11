@@ -20,6 +20,7 @@ import com.example.foodhub.adapter.CategoryAdapter
 import com.example.foodhub.datamodel.retrofitdatamodel.Popular
 import com.example.foodhub.databinding.FragmentHomeBinding
 import com.example.foodhub.helper.HorizontalItemDecorationForCatrgory
+import com.example.foodhub.helper.showBottomNavigation
 import com.example.foodhub.helper.verticaldecorationRecyclerview
 import com.example.foodhub.sealedclass.Resources
 import com.example.foodhub.viewmodel.MealViewmodel
@@ -65,13 +66,6 @@ class HomeFragment : Fragment() {
 
             override fun onItemSelected(position: Int) {
 
-                Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_SHORT).show()
-                val meal = data[position]
-                val data =Bundle().apply {
-                    putParcelable("popularProduct",meal)
-                }
-
-                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment,data)
             }
 
         })
@@ -83,6 +77,7 @@ class HomeFragment : Fragment() {
             }
 
             findNavController().navigate(R.id.action_homeFragment_to_categoryItemFragment,data)
+
         }
 
     }
@@ -150,4 +145,8 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        showBottomNavigation()
+    }
 }
